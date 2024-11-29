@@ -131,6 +131,5 @@ def get_url():
 def index():
     return render_template('upload.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
 

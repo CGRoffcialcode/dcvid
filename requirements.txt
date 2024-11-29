@@ -3,3 +3,4 @@ requests
 moviepy
 python-dotenv
 discord.py
+gunicorn
