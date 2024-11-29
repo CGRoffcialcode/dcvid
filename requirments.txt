@@ -1,0 +1,5 @@
+Flask
+requests
+moviepy
+python-dotenv
+discord.py
