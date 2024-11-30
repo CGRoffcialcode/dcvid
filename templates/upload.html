@@ -13,19 +13,20 @@
       {% if discord_url %}
       <p>The upload worked successfully! Here is the link so you can share the video on discord!</p>
       <p>Discord Link: <a href="{{ discord_url }}">{{ discord_url }}</a></p>
+      <p>Once you've finished, please log out as not doing it will save your suer data. We don't like overloading our servers ._.</p>
       {% endif %}
       {% if error_message %}
         <p style="color: red;">{{ error_message }}</p>
       {% endif %}
       <form action="http://127.0.0.1:5000/get_url" method="post" enctype="multipart/form-data">
-        <p>Get you url</p>
+        <p>Get your url</p>
         <input type="text" name="unique_id" placeholder="Unique ID" required>
         <input type="submit" value="Find">
       </form>
       {% if url %}
       <p>The finding worked successfully! Here is the link so you can share the video on discord!</p>
       <p>Link: <a href="{{ url }}">{{ url }}</a></p>
-      <p>Once you've finished, please log out as not doing it will save your suer data. We don't like overloading our servers ._.</div>/p>
+      <p>Once you've finished, please log out as not doing it will save your user data. We don't like overloading our servers ._.</p>
       {% endif %}
       
       <a href="{{ url_for('logout') }}">Logout</a>
