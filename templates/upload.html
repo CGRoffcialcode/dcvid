@@ -25,6 +25,9 @@
       {% if url %}
       <p>The finding worked successfully! Here is the link so you can share the video on discord!</p>
       <p>Link: <a href="{{ url }}">{{ url }}</a></p>
+      <p>Once you've finished, please log out as not doing it will save your suer data. We don't like overloading our servers ._.</div>/p>
       {% endif %}
+      
+      <a href="{{ url_for('logout') }}">Logout</a>
 </body>
 </html>

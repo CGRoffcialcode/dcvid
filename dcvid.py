@@ -1,6 +1,7 @@
 import json
+import uuid
 import requests
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, redirect, request, render_template, jsonify, session, url_for
 from moviepy import VideoFileClip
 import os
 from libares import jsonreturn
@@ -8,8 +9,9 @@ import traceback
 #For generating unique IDs if needed
 data =0
 app = Flask(__name__)
+app.secret_key = os.urandom(24)  
 ID_URL_MAP_FILE = "id_url_map.json" #Name of JSON file for storing mappings.
-
+user_upload_status = {}
 def load_id_url_map():
   """Loads the ID-URL map from the JSON file. Creates it if it doesn't exist."""
   try:
@@ -25,6 +27,15 @@ def save_id_url_map(id_url_map):
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    if 'user_id' not in session:  # Check if user is logged in
+        user_id = str(uuid.uuid4())#
+        session['user_id'] = user_id   
+    
+    user_id = session['user_id']
+    if user_id in user_upload_status and user_upload_status[user_id] == "uploaded":
+        return render_template('upload.html', error_message="You've already uploaded a video.  Please wait.")
+
+    # ... (Rest of your upload processing code)
     file = request.files['mp4_file']
     unique_id = request.form.get('unique_id')
     id_url_map = load_id_url_map()
@@ -95,8 +106,9 @@ def upload_file():
               id_url_map = load_id_url_map()
               id_url_map[unique_id] = message_url
               save_id_url_map(id_url_map)
+              user_upload_status[user_id] = "uploaded"
               return render_template('upload.html', discord_url=message_url)
-
+          
           except json.JSONDecodeError as e:
               return render_template('upload.html', error_message=f"Error decoding Discord response: {e}")
           except Exception as e:
@@ -125,11 +137,23 @@ def get_url():
         return render_template('upload.html', url=url)  # Return the URL as JSON
     else:
         return render_template('upload.html', url=url) # Return an error if the ID isn't found
+    
 
+
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    user_id = session.get('user_id')  # Get the user ID from the session
+    if user_id and user_id in user_upload_status:
+        del user_upload_status[user_id]  # Remove the user from the upload status dictionary
+    session.pop('user_id', None)  # Clear the user's session
+    return redirect(url_for('index'))  # Redirect to your home page
 
 @app.route('/')
 def index():
     return render_template('upload.html')
 
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
