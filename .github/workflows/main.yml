@@ -8,9 +8,7 @@ on:
 jobs:
   run-dcvid:
     runs-on: ubuntu-latest
-    env: #This section is crucial for setting environment variables
-      DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-      FLASK_SECRET_KEY: ${{ secrets.DISCORD_RETRIVAL_TOKEN}} 
+   
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

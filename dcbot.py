@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 from dotenv import load_dotenv
 import traceback 
-TOKEN = "MTMxMjE1NDg3MTEwNDkzMzkyOQ.GCx9Wl.JeuuXE5Mrgp-lN9Efllp1sL5KnzYpcFZkumrbA"
+TOKEN = "DISCORD_BOT_TOKEN"
 
 
 if TOKEN is None:

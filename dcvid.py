@@ -66,7 +66,7 @@ def upload_file():
           # 2. Build CORRECT URL for channel messages using the channel_id
           channel_messages_url = f"https://discord.com/api/channels/{channel_id}/messages?limit=100"
 
-          bot_token = "MTMxMjE0OTUwNzIxNDkzNDEzNw.Grud4g.QALlOVrX26fPCt8HW3qY-Lq-VXcNyXqnW_Bv_o"  # Store your bot token securely, don't hardcode!
+          bot_token = "DISCORD_VIDEO_TOKEN"  # Store your bot token securely, don't hardcode!
           headers = {"Authorization": f"Bot {bot_token}"}
 
 
