@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-dcvid:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
    
     steps:
       - name: Checkout code
@@ -30,3 +30,4 @@ jobs:
       - name: Run DCbot (Discord bot)
         run: |
           python dcbot.py &
+          sleep 120 
