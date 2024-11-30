@@ -30,4 +30,4 @@ jobs:
       - name: Run DCbot (Discord bot)
         run: |
           python dcbot.py &
-          sleep 120 
+          
