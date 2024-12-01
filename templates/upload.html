@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>title</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <form action="/upload" method="post" enctype="multipart/form-data">
@@ -12,12 +13,16 @@
       </form>
         
       {% if discord_url %}
+      <div class="success-message">
       <p>The upload worked successfully! Here is the link so you can share the video on discord!</p>
       <p>Discord Link: <a href="{{ discord_url }}">{{ discord_url }}</a></p>
       <p>Once you've finished, please log out as not doing it will save your user data. We don't like overloading our servers ._.</p>
+      </div>
       {% endif %}
       {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
+         <div class="error-message">
+           <p style="color: red;">{{ error_message }}</p>
+         </div>
       {% endif %}
       <form action="/get_url" method="post" enctype="multipart/form-data">
         <p>Get your url</p>
@@ -25,9 +30,11 @@
         <input type="submit" value="Find">
       </form>
       {% if url %}
+      <div class="success-message">
       <p>The finding worked successfully! Here is the link so you can share the video on discord!</p>
       <p>Link: <a href="{{ url }}">{{ url }}</a></p>
       <p>Once you've finished, please log out as not doing it will save your user data. We don't like overloading our servers ._.</p>
+      </div>
       {% endif %}
       
       <a href="{{ url_for('logout') }}">Logout</a>
