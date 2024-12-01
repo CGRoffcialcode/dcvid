@@ -12,3 +12,8 @@ ModuleNotFoundError: No module named 'fcntl'
 
 
   https://2039-2a02-6b67-d5b3-2f00-1006-453b-31fe-e651.ngrok-free.app
+
+
+  Get-NetFirewallRule: Lists all firewall rules.
+Get-NetFirewallRule -DisplayName "YourAppName": Finds a rule by its display name.
+Get-NetFirewallPortFilter
