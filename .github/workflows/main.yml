@@ -24,7 +24,7 @@ jobs:
       - name: Run DCvid (Flask app with Gunicorn)
         run: |
           export FLASK_APP=dcvid
-          gunicorn --bind 0.0.0.0:5000 dcvid:app &
+          gunicorn --bind 0.0.0.0:5000 dcvid:app 
           sleep 60 #Wait for flask to initialize
 
       - name: Run DCbot (Discord bot)
