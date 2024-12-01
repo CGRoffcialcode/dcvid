@@ -23,7 +23,7 @@ jobs:
 
       - name: Run DCvid (Flask app with Gunicorn)
         run: |
-          gunicorn --bind 0.0.0.0:5000 dcvid:app 
+          waitress-serve --listen=127.0.0.1:5000 dcvid:app
           sleep 60 #Wait for flask to initialize
 
       - name: Run DCbot (Discord bot)
