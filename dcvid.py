@@ -25,7 +25,7 @@ def save_id_url_map(id_url_map):
   with open(ID_URL_MAP_FILE, "w") as f:
     json.dump(id_url_map, f, indent=2)
 
-@app.route('http://149.34.170.70:5000/upload', methods=['POST'])
+@app.route('/http://149.34.170.70:5000/upload', methods=['POST'])
 def upload_file():
     if 'user_id' not in session:  # Check if user is logged in
         user_id = str(uuid.uuid4())#
@@ -128,7 +128,7 @@ def upload_file():
 
 
 
-@app.route('http://149.34.170.70:5000/get_url', methods=['POST'])
+@app.route('/http://149.34.170.70:5000/get_url', methods=['POST'])
 def get_url():
     unique_id = request.form.get('unique_id')
     id_url_map = load_id_url_map()
@@ -141,7 +141,7 @@ def get_url():
 
 
 
-@app.route('http://149.34.170.70:5000/logout', methods=['GET'])
+@app.route('/http://149.34.170.70:5000/logout', methods=['GET'])
 def logout():
     user_id = session.get('user_id')  # Get the user ID from the session
     if user_id and user_id in user_upload_status:
