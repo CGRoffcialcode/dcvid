@@ -18,6 +18,10 @@
       <div class="success-message">
       <p>The upload worked successfully! Here is the link so you can share the video on discord!</p>
       <p>Discord Link: <a href="{{ discord_url }}">{{ discord_url }}</a></p>
+      <video width="640" height="360" controls>
+        <source src="{{ discord_url }}" type="video/mp4">  <!-- Or the appropriate type -->
+        Your browser does not support the video tag.
+    </video>
       <p>Once you've finished, please log out as not doing it will save your user data. We don't like overloading our servers ._.</p>
       </div>
       {% endif %}
@@ -35,6 +39,10 @@
       <div class="success-message">
       <p>The finding worked successfully! Here is the link so you can share the video on discord!</p>
       <p>Link: <a href="{{ url }}">{{ url }}</a></p>
+      <video width="640" height="360" controls>
+        <source src="{{ url }}" type="video/mp4">  <!-- Or the appropriate type -->
+        Your browser does not support the video tag.
+    </video>
       <p>Once you've finished, please log out as not doing it will save your user data. We don't like overloading our servers ._.</p>
       </div>
       {% endif %}
